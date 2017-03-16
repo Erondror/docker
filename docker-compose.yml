@@ -1,0 +1,28 @@
+apachephp:
+ image : tap:latest
+ volumes:
+ - '/home/astheri/hugo/www/:/var/www/html'
+ links:
+ - 'mysqlh:db'
+ ports:
+ - "8888:80"
+ privileged: true
+
+phpmyadminh:
+ image: phpmyadmin/phpmyadmin
+ ports:
+ - "8090:80"
+ links:
+ - 'mysqlh:db'
+
+mysqlh:
+ image: mysql:latest
+ volumes:
+ - '/home/astheri/hugo/mysql:/var/lib/mysql'
+ ports:
+ - '3307:3306'
+ environment:
+     - MYSQL_USER=dev
+     - MYSQL_PASSWORD=dev
+     - MYSQL_ROOT_PASSWORD=root
+ privileged: true
