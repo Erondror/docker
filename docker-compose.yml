@@ -1,7 +1,7 @@
 apachephp:
  image : tap:latest
  volumes:
- - '/home/astheri/hugo/www/:/var/www/html'
+ - '/home/hugo/www/:/var/www/html'
  links:
  - 'mysqlh:db'
  ports:
@@ -18,7 +18,7 @@ phpmyadminh:
 mysqlh:
  image: mysql:latest
  volumes:
- - '/home/astheri/hugo/mysql:/var/lib/mysql'
+ - '/home/hugo/mysql:/var/lib/mysql'
  ports:
  - '3307:3306'
  environment:
